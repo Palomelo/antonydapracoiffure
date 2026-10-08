@@ -102,7 +102,7 @@
     position: relative;
     justify-content: center;
     gap: 10px;
-    min-height: 125px;
+    min-height: 80px;
   }
 
   .site-header .site-logo {
@@ -111,7 +111,7 @@
 
   .site-header .brand-logo {
     width: clamp(220px, 76vw, 320px);
-    height: 125px;
+    height: 80px;
   }
 
   .site-header .btn,
@@ -133,7 +133,7 @@
   /* Menu déroulant sous l'en-tête, affiché par js/menu.js */
   .main-nav {
     position: absolute;
-    top: 125px;
+    top: 80px;
     right: 0;
     left: 0;
     display: none;
