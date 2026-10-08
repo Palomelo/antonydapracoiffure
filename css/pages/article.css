@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Antony Dapra Coiffure - pages/article.css
+   Page d'un article de conseils : bandeau, texte de lecture, rendez-vous
+   et articles à lire aussi. Les cartes (.advice-card) viennent de
+   components.css.
+   ========================================================================== */
+
+.article {
+  padding-block: clamp(32px, 5vw, 64px);
+  background: #fff;
+}
+
+.article__back {
+  display: inline-block;
+  margin-bottom: 20px;
+  font: 500 0.9rem var(--font-body);
+  text-underline-offset: 3px;
+}
+
+.article__banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.article__banner img {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+
+.article__tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 5px 14px;
+  border: 1px solid #111;
+  border-radius: 99px;
+  background: rgb(255 255 255 / 78%);
+  font: 300 0.85rem var(--font-body);
+}
+
+.article__heading {
+  max-width: 720px;
+  margin: 32px auto 0;
+}
+
+.article__title {
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+}
+
+.article__subtitle {
+  margin-top: 8px;
+  font: 400 0.95rem / 1.4 var(--font-body);
+  text-transform: uppercase;
+}
+
+.article__date {
+  display: block;
+  margin-top: 12px;
+  color: #555;
+  font: 400 0.85rem var(--font-body);
+}
+
+/* Texte de l'article (généré à partir du Markdown) */
+.article__body {
+  max-width: 720px;
+  margin: 28px auto 0;
+  font: 400 1.0625rem / 1.7 var(--font-body);
+}
+
+.article__body h2 {
+  margin: 2em 0 0.6em;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  text-align: left;
+}
+
+.article__body p + p {
+  margin-top: 1.1em;
+}
+
+.article__appointment {
+  max-width: 720px;
+  margin: 56px auto 0;
+  padding-top: 40px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.article__appointment .btn {
+  padding: 16px 36px;
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.article__appointment .btn:hover {
+  border-color: var(--color-sky);
+  background: var(--color-sky);
+  color: var(--color-ink);
+}
+
+.article__related {
+  margin-top: 64px;
+}
+
+.article__related .advice-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 780px;
+  margin-inline: auto;
+}
+
+@media (max-width: 860px) {
+  .article__related .advice-grid {
+    grid-template-columns: 1fr;
+  }
+}

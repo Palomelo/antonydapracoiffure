@@ -1,0 +1,15 @@
+VERSION INTERMÉDIAIRE (en cours de vérification)
+
+Site statique en HTML, CSS et JavaScript, sans framework.
+Le README complet sera ajouté dans la version finale.
+
+Pour voir le site en local (depuis ce dossier) :
+  - avec VS Code : extension "Live Server", clic droit sur index.html > "Open with Live Server"
+  - ou dans le terminal : npx serve .   (puis ouvrir l'adresse affichée)
+
+Important : le site utilise des chemins absolus (/css/..., /images/...), il faut donc
+le lancer via un serveur (ci-dessus) et non en double-cliquant sur index.html.
+
+Déjà vérifié : rendu identique à ton site Astro actuel (comparaison visuelle page par page,
+ordinateur et mobile), JavaScript sans erreur de syntaxe.
+Encore à faire : validation HTML/CSS/JS, vérification des liens, tests des interactions.

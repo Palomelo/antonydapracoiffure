@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Antony Dapra Coiffure - pages/not-found.css
+   Page d'erreur 404.
+   ========================================================================== */
+
+.not-found {
+  padding-block: clamp(72px, 12vw, 160px);
+  text-align: center;
+}
+
+.not-found__title {
+  margin-bottom: 16px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.not-found__text {
+  margin-bottom: 28px;
+}
+
+.not-found .btn {
+  padding: 14px 32px;
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: #fff;
+}

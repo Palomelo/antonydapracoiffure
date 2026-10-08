@@ -1,0 +1,235 @@
+/* ==========================================================================
+   Antony Dapra Coiffure - base.css
+   Polices, variables, réinitialisation, typographie, utilitaires, boutons.
+   Chargé sur toutes les pages, avant components.css et le CSS de la page.
+   ========================================================================== */
+
+
+/* 1. Polices (hébergées localement, aucune requête vers un service tiers)
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "League Spartan";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/league-spartan-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "League Spartan";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/league-spartan-latin-800-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin-300-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin-700-normal.woff2") format("woff2");
+}
+
+
+/* 2. Variables (design tokens)
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Couleurs */
+  --color-ink: #0a0a0a;
+  --color-brown: #996a51;
+  --color-sky: #b6ccd7;
+  --color-taupe: #e8dfda;
+  --color-paper: #fff;
+
+  /* Typographie */
+  --font-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --font-title: "League Spartan", "Helvetica Neue", Arial, sans-serif;
+
+  /* Mise en page */
+  --container-width: 1120px;
+  --radius: 14px;
+  --header-height: 92px;
+}
+
+
+/* 3. Réinitialisation
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-brown);
+  outline-offset: 2px;
+}
+
+/* Les éléments masqués par le JavaScript (filtres) doivent rester masqués,
+   même si leur classe définit un "display". */
+[hidden] {
+  display: none !important;
+}
+
+
+/* 4. Typographie
+   -------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin-bottom: 28px;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  text-align: center;
+}
+
+
+/* 5. Utilitaires
+   -------------------------------------------------------------------------- */
+
+/* Colonne centrée de 1120 px maximum */
+.container {
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* Espacement vertical standard d'une section */
+.section {
+  padding-block: 48px;
+}
+
+/* Lien d'évitement pour la navigation au clavier */
+.skip-link {
+  position: absolute;
+  left: -999px;
+}
+
+.skip-link:focus {
+  top: 8px;
+  left: 8px;
+  z-index: 99;
+  padding: 8px;
+  background: #fff;
+}
+
+/* Texte lu par les lecteurs d'écran mais invisible à l'écran */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+
+/* 6. Boutons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  padding: 8px 22px;
+  border: 1px solid currentColor;
+  border-radius: 99px;
+  background: none;
+  color: inherit;
+  font: 600 0.8rem var(--font-body);
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn--brown {
+  border-color: var(--color-brown);
+  background: var(--color-brown);
+  color: #fff;
+}
+
+.btn--sky {
+  border-color: var(--color-sky);
+  background: var(--color-sky);
+}
+
+
+/* 7. Préférences de mouvement
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

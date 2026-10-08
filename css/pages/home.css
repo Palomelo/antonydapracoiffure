@@ -1,0 +1,727 @@
+/* ==========================================================================
+   Antony Dapra Coiffure - pages/home.css
+   Page d'accueil : présentation, prestations et horaires, carrousel de
+   produits, bandeau défilant, articles et avis clients.
+   ========================================================================== */
+
+
+/* 1. Présentation et coordonnées
+   -------------------------------------------------------------------------- */
+
+.intro {
+  text-align: center;
+}
+
+.intro__title {
+  margin-bottom: 24px;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.intro__text {
+  margin-inline: auto;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.intro__highlight {
+  margin: 18px auto 34px;
+  font-size: 1.0625rem;
+}
+
+.intro__divider {
+  width: min(100%, 1450px);
+  margin: 0 auto 26px;
+}
+
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1500px;
+  margin-inline: auto;
+  padding: 0;
+  font-size: clamp(0.75rem, 0.9vw, 1rem);
+  line-height: 1.35;
+  list-style: none;
+  text-align: center;
+}
+
+.contact-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-list span {
+  overflow-wrap: anywhere;
+}
+
+.contact-list a {
+  text-decoration: none;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+/* Icône avec un fin liseré blanc et une ombre douce */
+.contact-list__icon {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  filter: drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff)
+    drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #fff)
+    drop-shadow(0 4px 8px rgb(0 0 0 / 25%));
+}
+
+@media (max-width: 860px) {
+  .intro__text {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .intro__highlight {
+    margin: 16px auto 24px;
+    font-size: 0.95rem;
+  }
+
+  .contact-list {
+    gap: 20px 14px;
+    font-size: clamp(0.72rem, 1.6vw, 0.88rem);
+  }
+
+  .contact-list__icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 560px) {
+  .contact-list {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .contact-list li {
+    width: 100%;
+    max-width: 440px;
+    margin-inline: auto;
+  }
+}
+
+
+/* 2. Prestations et horaires
+   -------------------------------------------------------------------------- */
+
+.services {
+  padding-block: 48px;
+  border-radius: 24px 24px 0 0;
+  background: var(--color-sky);
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 24px;
+}
+
+.services h2 {
+  margin: 0 0 36px;
+  font-size: clamp(1.8rem, 2vw, 2.5rem);
+  text-align: left;
+}
+
+.services .accordion {
+  border-bottom-color: #111;
+}
+
+.services .accordion summary {
+  font: 400 1.125rem / 1.5 var(--font-body);
+}
+
+.services .accordion summary::after {
+  font: 300 1.5rem / 1 var(--font-body);
+}
+
+.services__cta {
+  margin-top: 24px;
+}
+
+.services__cta .btn {
+  display: block;
+  width: 100%;
+  padding: 9px 18px;
+  border-color: #fff;
+  border-radius: 999px;
+  background: transparent;
+  color: #111;
+  font: 400 0.95rem var(--font-body);
+  text-align: center;
+}
+
+.services__hours {
+  padding: 32px;
+  border-radius: 22px;
+  background: #fff;
+  color: var(--color-ink);
+}
+
+.services__hours h2 {
+  margin-bottom: 34px;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font: 400 1.125rem / 1.5 var(--font-body);
+}
+
+.hours-table th,
+.hours-table td {
+  padding: 7px 0;
+  border-bottom: 1px solid #111;
+  font-weight: 400;
+}
+
+.hours-table th {
+  text-align: left;
+}
+
+.hours-table td {
+  text-align: right;
+}
+
+@media (max-width: 860px) {
+  .services__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .services h2 {
+    font-size: 2rem;
+  }
+
+  .services__hours {
+    padding: 24px;
+  }
+}
+
+
+/* 3. Carrousel de produits
+   Le positionnement des produits est calculé par js/carousel.js.
+   -------------------------------------------------------------------------- */
+
+.products {
+  --espace-produit: 32px;
+  --produit-centre: 400px;
+
+  padding: 48px 0 56px;
+  background: linear-gradient(180deg, var(--color-sky) 0%, #e8f0f4 54%, #fff 100%);
+}
+
+.products .container {
+  max-width: 1500px;
+}
+
+.products h2 {
+  margin: 0;
+}
+
+.product-carousel {
+  position: relative;
+  max-width: 1500px;
+  margin: var(--espace-produit) auto 0;
+}
+
+.product-viewport {
+  width: 100%;
+  height: var(--produit-centre);
+  overflow-x: clip;
+  overflow-y: visible;
+  touch-action: pan-y;
+}
+
+.product-track {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(56px, 6vw, 110px);
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.6s ease;
+  will-change: transform;
+}
+
+.product-slide {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  transition: height 0.6s ease;
+}
+
+.product-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 0.85;
+}
+
+.product-slide.is-active img {
+  opacity: 1;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgb(10 10 10 / 25%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 60%);
+  color: var(--color-ink);
+  font: 300 2rem / 1 var(--font-body);
+  cursor: pointer;
+  opacity: 0.65;
+  transform: translateY(-50%);
+  transition:
+    opacity 0.2s,
+    background-color 0.2s;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+  background: #fff;
+  opacity: 1;
+}
+
+.carousel-arrow--previous {
+  left: 0;
+}
+
+.carousel-arrow--next {
+  right: 0;
+}
+
+.product-copy {
+  min-height: 0;
+  margin: var(--espace-produit) auto 18px;
+  text-align: center;
+  transition: opacity 0.18s ease;
+}
+
+.product-copy.is-fading {
+  opacity: 0;
+}
+
+.product-copy strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.product-copy p {
+  margin: 8px 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.products__link {
+  text-align: center;
+}
+
+.products .btn {
+  min-width: 260px;
+}
+
+@media (max-width: 860px) {
+  .products {
+    --produit-centre: 320px;
+  }
+}
+
+@media (max-width: 560px) {
+  .products {
+    --produit-centre: 260px;
+  }
+
+  .carousel-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 1.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-track,
+  .product-slide,
+  .product-slide img,
+  .product-copy {
+    transition: none !important;
+  }
+}
+
+
+/* 4. Bandeau défilant "Produits Actyva"
+   -------------------------------------------------------------------------- */
+
+.brand-ticker {
+  padding-block: 14px;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.brand-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: brand-ticker-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.brand-ticker__group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: clamp(20px, 3vw, 48px);
+  padding-right: clamp(20px, 3vw, 48px);
+  font: 400 clamp(1rem, 1.35vw, 1.25rem) / 1.3 var(--font-body);
+  white-space: nowrap;
+}
+
+.brand-ticker__separator {
+  font-weight: 700;
+}
+
+@keyframes brand-ticker-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-ticker__track {
+    animation: none;
+    transform: none;
+  }
+}
+
+
+/* 5. Avis clients
+   La vague décorative est une image de fond placée derrière les cartes.
+   -------------------------------------------------------------------------- */
+
+.reviews {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  padding: 58px 0 56px;
+  background: #fff;
+}
+
+/* Dégradé qui relie la vague au fond brun de la FAQ */
+.reviews::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  height: clamp(220px, 24vw, 360px);
+  background: linear-gradient(
+    to bottom,
+    rgb(153 106 81 / 0%) 0%,
+    var(--color-brown) 82%,
+    var(--color-brown) 100%
+  );
+  content: "";
+}
+
+.reviews__wave {
+  position: absolute;
+  top: 98px;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  aspect-ratio: 1054 / 337;
+  background: url("/images/vague-bande.png") center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+.reviews__content {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 40px);
+  max-width: 1400px;
+  padding: 0;
+}
+
+.reviews__title {
+  margin-bottom: 28px;
+}
+
+.reviews__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-inline: auto;
+}
+
+.reviews__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4%;
+}
+
+.reviews__row--top .review-card:first-child {
+  width: 52%;
+}
+
+.reviews__row--top .review-card:last-child {
+  width: 44%;
+}
+
+.reviews__row--bottom {
+  position: relative;
+  isolation: isolate;
+}
+
+.reviews__column {
+  position: relative;
+}
+
+.reviews__column--sylvie {
+  flex: 0 0 41%;
+  width: 41%;
+}
+
+.reviews__column--paul {
+  flex: 0 0 55%;
+  width: 55%;
+}
+
+.reviews__column .review-card {
+  width: 100%;
+}
+
+.review-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 26px;
+  border: 3px solid rgb(182 204 215 / 45%);
+  border-radius: 44px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(63 91 108 / 4%);
+  text-align: center;
+}
+
+.review-card__name {
+  font: 800 1.4rem / 1.15 var(--font-title);
+  text-transform: none;
+}
+
+.review-card__quote {
+  margin: 4px 0;
+  font: 700 1.1rem / 1.4 var(--font-body);
+}
+
+.review-card__text {
+  max-width: 430px;
+  font: 400 0.9rem / 1.4 var(--font-body);
+}
+
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 1px 10px;
+  border: 1px solid #111;
+  border-radius: 99px;
+  background: #fff;
+}
+
+.rating-badge__stars {
+  color: #f39a25;
+  font-family: Arial, sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.reviews__action {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin: 36px 0 0;
+  text-align: center;
+}
+
+.reviews__action .btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 320px;
+  padding: 18px 44px;
+  border: 2px solid #111;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 22%);
+  color: #111;
+  font: 700 1rem var(--font-body);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.reviews__action .btn:hover {
+  background: #000;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.reviews__action .btn:focus-visible {
+  outline: 3px solid var(--color-sky);
+  outline-offset: 3px;
+}
+
+@media (max-width: 860px) {
+  .reviews {
+    padding: 76px 0 40px;
+    background: linear-gradient(160deg, #f0e9e5 0%, #c6a897 34%, #996a51 72%);
+    scroll-margin-top: 72px;
+  }
+
+  .reviews::after,
+  .reviews__wave {
+    display: none;
+  }
+
+  .reviews__title {
+    margin-bottom: 24px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .reviews__grid {
+    gap: 12px;
+  }
+
+  .reviews__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .reviews__row--top .review-card:first-child,
+  .reviews__row--top .review-card:last-child {
+    width: 100%;
+  }
+
+  .reviews__column--sylvie,
+  .reviews__column--paul {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .review-card {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(20px, 3.5vw, 28px);
+  }
+
+  .review-card__name {
+    font-size: 1.3rem;
+  }
+
+  .review-card__quote {
+    font-size: 1.02rem;
+  }
+
+  .review-card__text {
+    max-width: 58ch;
+    font-size: 0.88rem;
+  }
+
+  .reviews__action {
+    margin-top: 20px;
+  }
+
+  .reviews__action .btn {
+    width: min(100%, 400px);
+    min-width: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .reviews {
+    padding: 82px 0 32px;
+    scroll-margin-top: 64px;
+  }
+
+  .reviews__content {
+    width: calc(100% - 36px);
+  }
+
+  .reviews__title {
+    margin-bottom: 20px;
+    font-size: clamp(1.35rem, 6vw, 1.7rem);
+  }
+
+  .reviews__grid {
+    gap: 14px;
+  }
+
+  .review-card {
+    padding: 20px 18px;
+    border-radius: 30px;
+  }
+
+  .review-card__name {
+    font-size: 1.2rem;
+  }
+
+  .review-card__quote {
+    font-size: 0.95rem;
+  }
+
+  .review-card__text {
+    font-size: 0.82rem;
+  }
+
+  .rating-badge__stars {
+    font-size: 1rem;
+  }
+
+  .reviews__action {
+    margin-top: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews__action .btn {
+    transition: none;
+  }
+
+  .reviews__action .btn:hover {
+    transform: none;
+  }
+}

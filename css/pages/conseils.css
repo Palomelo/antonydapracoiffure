@@ -1,0 +1,124 @@
+/* ==========================================================================
+   Antony Dapra Coiffure - pages/conseils.css
+   Page Nos conseils : tri et rangées horizontales par catégorie.
+   Les cartes (.advice-card) sont définies dans components.css.
+   ========================================================================== */
+
+.advice-listing {
+  padding-block: clamp(48px, 6vw, 88px);
+  background: #fff;
+}
+
+.advice-listing__title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.advice-sort {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 32px;
+  font: 500 0.9rem var(--font-body);
+}
+
+.advice-sort select {
+  min-height: 42px;
+  padding: 8px 36px 8px 14px;
+  border: 1px solid #bbb;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--color-ink);
+  font: 400 0.85rem var(--font-body);
+}
+
+.advice-shelf {
+  margin: 0 0 clamp(36px, 5vw, 64px);
+  padding: 0;
+}
+
+.advice-shelf__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.advice-shelf__heading h2 {
+  margin: 0;
+  font: 800 clamp(1.4rem, 2vw, 2rem) / 1.1 var(--font-title);
+  text-align: left;
+}
+
+.advice-shelf__controls {
+  display: flex;
+  gap: 10px;
+}
+
+.advice-shelf__controls button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font: 400 1.8rem / 1 var(--font-body);
+  cursor: pointer;
+}
+
+.advice-shelf__controls button:hover {
+  background: var(--color-sky);
+}
+
+.advice-shelf__controls button:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 3px;
+}
+
+.advice-rail {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  padding: 6px 4px 18px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.advice-rail .advice-card {
+  flex: 0 0 clamp(280px, 32vw, 370px);
+  scroll-snap-align: start;
+}
+
+@media (max-width: 600px) {
+  .advice-listing {
+    padding-block: 38px;
+  }
+
+  .advice-sort {
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .advice-sort select {
+    max-width: 62%;
+  }
+
+  .advice-rail {
+    gap: 14px;
+  }
+
+  .advice-rail .advice-card {
+    flex-basis: min(84vw, 350px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .advice-rail {
+    scroll-behavior: auto;
+  }
+}

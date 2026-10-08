@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Antony Dapra Coiffure - pages/produits.css
+   Page Nos produits : grille filtrable des produits Actyva.
+   ========================================================================== */
+
+.produits-listing {
+  padding: 18px 0 48px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: var(--radius);
+  background: var(--color-taupe);
+}
+
+.product-card__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #d9cbc3, #bfa99d);
+  object-fit: contain;
+}
+
+.product-card h3 {
+  font-size: 0.8rem;
+}
+
+.product-card p {
+  font-size: 0.78rem;
+}
+
+.product-card a {
+  margin-top: auto;
+  color: #5b7a93;
+  font-size: 0.78rem;
+}
+
+.produits-note {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .produits-listing {
+    padding-top: 14px;
+  }
+}

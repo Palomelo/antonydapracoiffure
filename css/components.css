@@ -1,0 +1,835 @@
+/* ==========================================================================
+   Antony Dapra Coiffure - components.css
+   Composants partagés par plusieurs pages :
+   en-tête, pied de page, accordéon, filtres, bandeau de page, cartes
+   d'articles, FAQ et carte Google Maps.
+   ========================================================================== */
+
+
+/* 1. En-tête et navigation
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-ink);
+  color: #fff;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: var(--header-height);
+}
+
+.site-logo {
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 260px;
+  height: 68px;
+  object-fit: cover;
+  object-position: center 48%;
+}
+
+.site-header .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Bouton du menu mobile (masqué sur ordinateur) */
+.menu-toggle {
+  display: none;
+  margin-left: auto;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.main-nav {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(14px, 2vw, 28px);
+  padding-right: clamp(12px, 1.6vw, 24px);
+  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
+}
+
+.main-nav a {
+  font-weight: 400;
+  opacity: 0.8;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current] {
+  font-weight: 700;
+  opacity: 1;
+}
+
+/* Icônes Instagram et Facebook (en-tête et pied de page) */
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-links a {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  text-decoration: none;
+}
+
+.social-links img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+@media (max-width: 860px) {
+  .site-header__inner {
+    position: relative;
+    justify-content: center;
+    gap: 10px;
+    min-height: 125px;
+  }
+
+  .site-header .site-logo {
+    margin-inline: auto;
+  }
+
+  .site-header .brand-logo {
+    width: clamp(220px, 76vw, 320px);
+    height: 125px;
+  }
+
+  .site-header .btn,
+  .site-header .social-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    display: block;
+    margin-left: 0;
+    padding: 4px 8px;
+    font-size: 2rem;
+    transform: translateY(-50%);
+  }
+
+  /* Menu déroulant sous l'en-tête, affiché par js/menu.js */
+  .main-nav {
+    position: absolute;
+    top: 125px;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    padding: 16px 20px;
+    background: var(--color-ink);
+  }
+
+  .main-nav.is-open {
+    display: flex;
+  }
+}
+
+
+/* 2. Pied de page
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  position: relative;
+  z-index: 4;
+  padding-block: 28px;
+  background: var(--color-ink);
+  color: #fff;
+  font-size: 0.72rem;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
+.site-footer .brand-logo {
+  height: 40px;
+}
+
+.site-footer .social-links a {
+  width: 32px;
+  height: 32px;
+}
+
+.site-footer .social-links img {
+  width: 24px;
+  height: 24px;
+}
+
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+
+/* 3. Accordéon (élément <details>)
+   -------------------------------------------------------------------------- */
+
+.accordion {
+  padding-block: 10px;
+  border-bottom: 1px solid currentColor;
+}
+
+.accordion summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary::after {
+  content: "+";
+}
+
+.accordion[open] summary::after {
+  content: "\2212";
+}
+
+.accordion p {
+  padding-block: 10px;
+  font-size: 0.9rem;
+}
+
+
+/* 4. Filtres par catégorie (prestations et produits)
+   -------------------------------------------------------------------------- */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.chips button {
+  padding: 6px 22px;
+  border: 1px solid #bbb;
+  border-radius: 99px;
+  background: #fff;
+  font: 500 0.8rem var(--font-body);
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.chips button[aria-pressed="true"] {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: #fff;
+}
+
+/* Variante sur une seule ligne, défilante (page Prestations) */
+.chips--scroll {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  white-space: nowrap;
+}
+
+.chips--scroll button {
+  flex: 0 0 auto;
+  padding: 7px 14px;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .chips button:hover {
+    border-color: var(--color-sky);
+    background: var(--color-sky);
+    color: var(--color-ink);
+    box-shadow: 0 4px 12px rgb(10 10 10 / 14%);
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 767px) {
+  .chips {
+    margin-bottom: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chips button {
+    transition: none;
+  }
+}
+
+
+/* 5. Bandeau de titre des pages Prestations et Produits
+   -------------------------------------------------------------------------- */
+
+.page-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  height: clamp(210px, 25vw, 310px);
+  padding: clamp(20px, 3.5vw, 42px);
+  overflow: hidden;
+  background: #55453d;
+  color: #fff;
+}
+
+.page-hero img,
+.page-hero__shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.page-hero img {
+  object-fit: cover;
+  object-position: center var(--hero-position, 50%);
+}
+
+.page-hero__shade {
+  background: linear-gradient(90deg, rgb(0 0 0 / 42%), transparent 75%);
+}
+
+.page-hero h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #fff;
+  font: 800 clamp(1.6rem, 3.2vw, 2.7rem) / 1.1 var(--font-title);
+}
+
+.page-hero--prestations {
+  --hero-position: 48%;
+}
+
+.page-hero--produits {
+  --hero-position: 52%;
+}
+
+@media (max-width: 767px) {
+  .page-hero {
+    height: 220px;
+    padding: 22px 20px;
+  }
+}
+
+
+/* 6. Cartes d'articles (accueil, page Conseils, bas des articles)
+   -------------------------------------------------------------------------- */
+
+.advice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 20px;
+}
+
+.advice-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #d5c8c1;
+  border-radius: 22px;
+  background: var(--color-taupe);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.advice-card__link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.advice-card__link:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: -5px;
+}
+
+.advice-card__media {
+  position: relative;
+  flex: 0 0 210px;
+  height: 210px;
+  overflow: hidden;
+  border-radius: 21px 21px 0 0;
+}
+
+.advice-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.advice-card__tag {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  padding: 4px 12px;
+  border: 1px solid #111;
+  border-radius: 99px;
+  background: rgb(255 255 255 / 78%);
+  font: 300 0.78rem var(--font-body);
+}
+
+.advice-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px 18px 14px;
+}
+
+.advice-card__title {
+  color: #111;
+  font: 800 1.25rem / 1.12 var(--font-title);
+}
+
+.advice-card__subtitle {
+  margin-top: 5px;
+  font: 400 0.82rem / 1.3 var(--font-body);
+  text-transform: uppercase;
+}
+
+.advice-card__excerpt {
+  margin-top: 9px;
+  font: 400 0.875rem / 1.5 var(--font-body);
+}
+
+.advice-card__more {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 15px;
+  color: var(--color-sky);
+  font: 700 0.88rem var(--font-body);
+}
+
+.advice-card__more span,
+.advice-cta__button span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.advice-card__date {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #111;
+  font: 400 0.72rem / 1.3 var(--font-body);
+  text-align: left;
+}
+
+/* Bouton "Découvrir tous nos conseils" */
+.advice-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.advice-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding-inline: 28px;
+  border-radius: 999px;
+  background: #0a0a0a;
+  color: #fff;
+  font: 700 0.92rem var(--font-body);
+  text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.advice-cta__button:focus-visible {
+  outline: 3px solid #0a0a0a;
+  outline-offset: 4px;
+  background: var(--color-sky);
+  color: #0a0a0a;
+}
+
+.advice-cta__button:focus-visible span {
+  transform: translateX(4px);
+}
+
+@media (hover: hover) {
+  .advice-card:hover,
+  .advice-card:focus-within {
+    box-shadow: 0 12px 28px rgb(0 0 0 / 14%);
+    transform: translateY(-6px);
+  }
+
+  .advice-card:hover .advice-card__media img,
+  .advice-card:focus-within .advice-card__media img {
+    transform: scale(1.05);
+  }
+
+  .advice-card:hover .advice-card__more span,
+  .advice-card:focus-within .advice-card__more span,
+  .advice-cta__button:hover span {
+    transform: translateX(4px);
+  }
+
+  .advice-cta__button:hover {
+    background: var(--color-sky);
+    color: #0a0a0a;
+  }
+}
+
+@media (max-width: 860px) {
+  .advice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .advice-card {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .advice-card:hover,
+  .advice-card:focus-within {
+    transform: none;
+  }
+
+  .advice-card__media img,
+  .advice-card__more span,
+  .advice-cta__button span {
+    transition: none;
+  }
+
+  .advice-card:hover .advice-card__media img,
+  .advice-card:focus-within .advice-card__media img,
+  .advice-card:hover .advice-card__more span,
+  .advice-card:focus-within .advice-card__more span,
+  .advice-cta__button:hover span,
+  .advice-cta__button:focus-visible span {
+    transform: none;
+  }
+}
+
+
+/* 7. Section FAQ "Vous avez une question ?"
+   Variantes : par défaut (fond brun, pages internes), .faq--home (accueil,
+   bouton à contour blanc) et .faq--light (page La Boutique, fond blanc).
+   -------------------------------------------------------------------------- */
+
+.faq {
+  --faq-background: var(--color-brown);
+  --faq-color: #fff;
+  --faq-button-border: var(--color-ink);
+
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  width: 100%;
+  padding-block: clamp(64px, 8vw, 120px);
+  overflow-x: clip;
+  background: var(--faq-background);
+  color: var(--faq-color);
+}
+
+.faq--home {
+  --faq-button-border: #fff;
+}
+
+.faq--light {
+  --faq-background: #fff;
+  --faq-color: var(--color-ink);
+}
+
+/* Grille pleine largeur : texte aligné sur la colonne du site, photo
+   collée au bord droit de l'écran. */
+.faq__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 66%) minmax(0, 34%);
+  align-items: center;
+  width: 100%;
+  padding: 0 0 0 max(24px, calc((100% - var(--container-width)) / 2));
+}
+
+.faq__content {
+  justify-self: start;
+  width: min(58vw, 780px);
+}
+
+.faq__title {
+  margin: 0;
+  font: 800 clamp(28px, 2.8vw, 44px) / 0.98 var(--font-title);
+  text-align: left;
+}
+
+.faq__subtitle {
+  margin: 4px 0 22px;
+  font: 300 clamp(23.8px, 2.38vw, 37.4px) / 1 var(--font-body);
+}
+
+.faq .accordion {
+  padding: 0;
+  border-bottom-width: 2px;
+}
+
+.faq .accordion summary {
+  align-items: center;
+  gap: 18px;
+  padding-block: 14px;
+  font: 400 clamp(17px, 1.6vw, 24px) / 1.3 var(--font-body);
+}
+
+/* La flèche remplace le "+" de l'accordéon standard */
+.faq .accordion summary::after {
+  content: none;
+}
+
+.faq .accordion[open] summary::after {
+  content: "\2212";
+  font: 400 1em / 1 var(--font-body);
+  text-align: center;
+}
+
+.faq__chevron {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 11px;
+  fill: none;
+  stroke: #000;
+  stroke-width: 2.5;
+  transition: transform 0.2s ease;
+}
+
+.faq .accordion[open] .faq__chevron {
+  display: none;
+}
+
+.faq .accordion > p {
+  padding: 0 0 14px;
+  font: 400 clamp(15px, 1.35vw, 19px) / 1.5 var(--font-body);
+}
+
+.faq__action {
+  margin: 60px 0 0;
+}
+
+.faq__action .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(540px, 100%);
+  min-width: 340px;
+  height: 62px;
+  min-height: 60px;
+  padding: 0 56px;
+  border: 3px solid var(--faq-button-border);
+  border-radius: 999px;
+  background: var(--color-sky);
+  color: var(--color-ink);
+  font: 400 clamp(16px, 1.6vw, 22px) / 1.2 var(--font-body);
+  text-align: center;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.faq__action .btn:hover {
+  border-color: var(--color-sky);
+  background: #fff;
+}
+
+.faq__action .btn:focus-visible {
+  outline: 3px solid var(--faq-button-border);
+  outline-offset: 4px;
+}
+
+.faq__media {
+  width: 100%;
+  min-width: 0;
+}
+
+.faq__photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  object-fit: cover;
+  border: 6px solid var(--color-sky);
+  border-right: 0;
+  border-radius: 44px 0 0 44px;
+}
+
+@media (max-width: 860px) {
+  .faq__action {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .faq__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 0 24px;
+  }
+
+  .faq__content {
+    width: 100%;
+  }
+
+  .faq__action .btn {
+    min-width: min(340px, 100%);
+  }
+
+  .faq__photo {
+    border: 6px solid var(--color-sky);
+    border-radius: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq__chevron,
+  .faq__action .btn {
+    transition: none;
+  }
+}
+
+
+/* 8. Carte Google Maps
+   -------------------------------------------------------------------------- */
+
+.map-section {
+  position: relative;
+  z-index: 3;
+  padding: 0 0 18px;
+  background: #fff;
+  color: var(--color-ink);
+}
+
+.map-section__frame {
+  display: block;
+  width: 100%;
+  height: clamp(560px, 72svh, 900px);
+  border: 0;
+}
+
+.map-section__action {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.map-section__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding-inline: 24px;
+  border-radius: 999px;
+  background: #0a0a0a;
+  color: #fff;
+  font: 700 0.9rem var(--font-body);
+  text-decoration: none;
+}
+
+.map-section__link:focus-visible {
+  outline: 3px solid var(--color-sky);
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .map-section__frame {
+    height: clamp(420px, 70svh, 680px);
+  }
+}
+
+
+/* 9. Bandeau d'accueil plein écran (accueil et La Boutique)
+   .hero__media accepte une <img> ou une <video> (voir README).
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: calc(100vh - 56px);
+  height: calc(100svh - 56px);
+  overflow: hidden;
+  background: linear-gradient(135deg, #6b5a50, #c9b5a8);
+  color: #fff;
+  text-align: center;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 26%);
+}
+
+.hero__title {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 20px;
+  line-height: 0.92;
+  text-transform: none;
+}
+
+.hero__welcome {
+  font: 800 clamp(3rem, 8vw, 8rem) / 0.9 var(--font-title);
+}
+
+.hero__name {
+  font: 700 clamp(1.5rem, 4vw, 4rem) / 0.98 var(--font-title);
+}
