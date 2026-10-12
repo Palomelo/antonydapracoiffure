@@ -122,3 +122,39 @@ document.querySelectorAll(".prestations-listing").forEach((section) => {
     });
   });
 });
+
+
+/* Sélection automatique d'une catégorie depuis l'URL */
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  const categorie = (params.get("categorie") || "").toLowerCase();
+
+  const categories = {
+    homme: "Homme & barbier",
+    femme: "Femme",
+    enfant: "Enfant - 12 ans"
+  };
+
+  const categorieCible = categories[categorie];
+
+  if (!categorieCible) {
+    console.log("Aucune catégorie reconnue dans l'URL :", categorie);
+    return;
+  }
+
+  const boutons = document.querySelectorAll(
+    ".prestations-listing [data-main-filter]"
+  );
+
+  const bouton = Array.from(boutons).find(
+    (element) => element.dataset.mainFilter === categorieCible
+  );
+
+  if (bouton) {
+    bouton.click();
+    console.log("Catégorie sélectionnée :", categorieCible);
+  } else {
+    console.error("Bouton introuvable :", categorieCible);
+  }
+})();
+
