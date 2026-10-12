@@ -348,6 +348,17 @@ transition: background-color 0.25s ease, color 0.25s ease;
 
 .products .btn {
   min-width: 260px;
+  background: #000000;
+  color: #FFFFFF;
+  border: 1px solid #000000;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.products .btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #000000;
+}
 }
 
 @media (max-width: 860px) {
