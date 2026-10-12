@@ -155,10 +155,16 @@
   padding: 9px 18px;
   border-color: #fff;
   border-radius: 999px;
-  background: transparent;
-  color: #111;
+  background: #000000;
+  color: #FFFFFF;
   font: 400 0.95rem var(--font-body);
   text-align: center;
+transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.services__cta .btn:hover {
+  background: #FFFFFF;
+  color: #000000;
 }
 
 .services__hours {
