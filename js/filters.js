@@ -44,3 +44,81 @@ document.querySelectorAll("[data-filter-group]").forEach((group) => {
     showCategory(button.dataset.category);
   });
 });
+
+/* Sous-catégories de la page Nos prestations */
+document.querySelectorAll(".prestations-listing").forEach((section) => {
+  const mainButtons = section.querySelectorAll("[data-main-filter]");
+  const subfilters = section.querySelector("[data-subfilters]");
+  const subButtons = section.querySelectorAll("[data-sub-filter]");
+  const items = section.querySelectorAll("#service-list .service-row");
+
+  if (!mainButtons.length || !subfilters || !items.length) return;
+
+  const womenCategories = [
+    "Couleur",
+    "Couleur et mèches",
+    "Mèches",
+    "Permanente",
+    "Coupe femme",
+    "Coiffage"
+  ];
+
+  function selectButton(buttons, selectedButton) {
+    buttons.forEach((button) => {
+      const active = button === selectedButton;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  function filterItems(mainCategory, subCategory = "") {
+    items.forEach((item) => {
+      const category = item.dataset.category || "";
+
+      if (mainCategory === "Femme") {
+        item.hidden = subCategory
+          ? category !== subCategory
+          : !womenCategories.includes(category);
+      } else {
+        item.hidden = category !== mainCategory;
+      }
+    });
+  }
+
+  mainButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectButton(mainButtons, button);
+
+      const category = button.dataset.mainFilter;
+      const isWomen = category === "Femme";
+
+      subfilters.hidden = !isWomen;
+
+      if (isWomen) {
+        const allButton = [...subButtons].find(
+          (subButton) => subButton.dataset.subFilter === "Femme"
+        );
+
+        if (allButton) selectButton(subButtons, allButton);
+
+        filterItems("Femme");
+      } else {
+        filterItems(category);
+      }
+    });
+  });
+
+  subButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectButton(subButtons, button);
+
+      const category = button.dataset.subFilter;
+
+      if (category === "Femme") {
+        filterItems("Femme");
+      } else {
+        filterItems("Femme", category);
+      }
+    });
+  });
+});

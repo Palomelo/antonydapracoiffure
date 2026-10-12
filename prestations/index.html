@@ -49,18 +49,31 @@
     </div>
 
     <section class="prestations-listing">
-      <div class="container">
-        <div class="chips chips--scroll" role="group" aria-label="Filtrer les prestations par catégorie" data-filter-group data-filter-target="#service-list .service-row" data-filter-mode="single">
-          <button type="button" aria-pressed="false" data-category="">Tout</button>
-          <button type="button" aria-pressed="true" data-category="Homme &amp; barbier">Homme &amp; barbier</button>
-          <button type="button" aria-pressed="false" data-category="Couleur">Couleur</button>
-          <button type="button" aria-pressed="false" data-category="Couleur et mèches">Couleur et mèches</button>
-          <button type="button" aria-pressed="false" data-category="Mèches">Mèches</button>
-          <button type="button" aria-pressed="false" data-category="Permanente">Permanente</button>
-          <button type="button" aria-pressed="false" data-category="Coupe femme">Coupe femme</button>
-          <button type="button" aria-pressed="false" data-category="Coiffage">Coiffage</button>
-          <button type="button" aria-pressed="false" data-category="Enfant - 12 ans">Enfant - 12 ans</button>
-        </div>
+  <div class="container">
+
+    <!-- Onglets principaux -->
+    <div class="chips chips--scroll" role="group" aria-label="Catégories principales">
+      <button type="button" class="is-active" aria-pressed="true" data-main-filter="Homme &amp; barbier">
+        Homme &amp; barbier
+      </button>
+      <button type="button" aria-pressed="false" data-main-filter="Femme">
+        Femme
+      </button>
+      <button type="button" aria-pressed="false" data-main-filter="Enfant - 12 ans">
+        Enfant - 12 ans
+      </button>
+    </div>
+
+    <!-- Sous-onglets Femme -->
+    <div class="chips chips--scroll prestations-subtabs" role="group" aria-label="Catégories de prestations femme" data-subfilters hidden>
+      <button type="button" class="is-active" aria-pressed="true" data-sub-filter="Femme">Toutes</button>
+      <button type="button" aria-pressed="false" data-sub-filter="Couleur">Couleur</button>
+      <button type="button" aria-pressed="false" data-sub-filter="Couleur et mèches">Couleur et mèches</button>
+      <button type="button" aria-pressed="false" data-sub-filter="Mèches">Mèches</button>
+      <button type="button" aria-pressed="false" data-sub-filter="Permanente">Permanente</button>
+      <button type="button" aria-pressed="false" data-sub-filter="Coupe femme">Coupe femme</button>
+      <button type="button" aria-pressed="false" data-sub-filter="Coiffage">Coiffage</button>
+    </div>
         <h2>Toutes nos prestations</h2>
         <ul class="service-list" id="service-list">
           <li class="service-row" data-category="Homme &amp; barbier">

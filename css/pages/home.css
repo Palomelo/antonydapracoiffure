@@ -359,7 +359,6 @@ transition: background-color 0.25s ease, color 0.25s ease;
   color: #000000;
   border-color: #000000;
 }
-}
 
 @media (max-width: 860px) {
   .products {
