@@ -161,30 +161,25 @@
     transform: translateY(-50%);
   }
 }
-/* Petits écrans (téléphone) */
+/* Icônes réseaux dans le menu déroulant : cachées sauf sur téléphone */
+.social-links--menu {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .site-header .social-links--mobile {
+    display: none;
+  }
+
+  .site-header .main-nav .social-links--menu {
     display: flex;
-    left: 12px;
-    gap: 4px;
+    justify-content: center;
+    gap: 16px;
+    padding-top: 8px;
   }
 
-  .site-header .social-links--mobile a {
-    width: 24px;
-    height: 24px;
-  }
-
-  .site-header .social-links--mobile img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .site-header .brand-logo {
-    width: clamp(140px, 46vw, 220px);
-  }
-
-  .menu-toggle {
-    right: 12px;
+  .site-header .main-nav .social-links--menu a {
+    opacity: 1;
   }
 }
 
