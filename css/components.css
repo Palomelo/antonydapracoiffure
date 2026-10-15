@@ -161,6 +161,32 @@
     transform: translateY(-50%);
   }
 }
+/* Petits écrans (téléphone) */
+@media (max-width: 600px) {
+  .site-header .social-links--mobile {
+    display: flex;
+    left: 12px;
+    gap: 4px;
+  }
+
+  .site-header .social-links--mobile a {
+    width: 24px;
+    height: 24px;
+  }
+
+  .site-header .social-links--mobile img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .site-header .brand-logo {
+    width: clamp(140px, 46vw, 220px);
+  }
+
+  .menu-toggle {
+    right: 12px;
+  }
+}
 
 /* 2. Pied de page
    -------------------------------------------------------------------------- */
