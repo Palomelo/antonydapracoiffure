@@ -129,6 +129,19 @@
     font-size: 2rem;
     transform: translateY(-50%);
   }
+  @media (max-width: 860px) {
+  .site-header__inner {
+    display: flex;
+    justify-content: center;
+  }
+
+  .site-header .site-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+}
 
   /* Menu déroulant sous l'en-tête, affiché par js/menu.js */
   .main-nav {
