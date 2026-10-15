@@ -146,7 +146,21 @@
     display: flex;
   }
 }
+/* Icônes réseaux dans l'en-tête : cachées sur ordinateur */
+.social-links--mobile {
+  display: none;
+}
 
+@media (max-width: 860px) {
+  .site-header .social-links--mobile {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    display: flex;
+    gap: 6px;
+    transform: translateY(-50%);
+  }
+}
 
 /* 2. Pied de page
    -------------------------------------------------------------------------- */
